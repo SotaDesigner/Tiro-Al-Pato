@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - ParedAzul
+  - Suelo
+  - Diana
+  - GeneradorPatos
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - FrontEscenario
+  - Tiles
+  - Olas
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Tiles
+    uniqueID: 849534001
+    locked: 0
+  - name: Fondo
+    uniqueID: 1900376715
+    locked: 0
+  - name: Pato
+    uniqueID: 12082341
+    locked: 0
+  - name: Olas
+    uniqueID: 3270325583
+    locked: 0
+  - name: EscenarioFront
+    uniqueID: 16138649
+    locked: 0
