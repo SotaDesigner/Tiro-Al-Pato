@@ -9,7 +9,7 @@ public class ControlPatitos : MonoBehaviour
     //Usamos SerializerField para mostrar una variable privada en Unity
     [SerializeField]
     //La variable velocidad cambiará la velocidad de la animacion
-    float velocidad;
+    public float velocidad;
     public static int puntuacionPorPato;
 
     Transform generadorDePatos;
@@ -19,8 +19,8 @@ public class ControlPatitos : MonoBehaviour
         generadorDePatos = GameObject.FindGameObjectWithTag("GeneradorPatos").GetComponent<Transform>();
         //inicialización del Animator
         controlador = GetComponent<Animator>();
-        velocidad = Random.Range(1, 3);
-        controlador.speed = velocidad/2;
+        velocidad = GameControl.velocidadPatos;
+        controlador.speed = velocidad/5;
         Mathf.Round(velocidad);
         puntuacionPorPato = (int)velocidad * 2;
     }

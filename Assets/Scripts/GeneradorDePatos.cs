@@ -6,11 +6,11 @@ public class GeneradorDePatos : MonoBehaviour
 {
     
     public GameObject[] patos;
-
+    public float tiempoInvocacion;
 
     void Start()
     {
-        InvokeRepeating("InctanciarPatos", 1, 1);
+        InvokeRepeating("InctanciarPatos", 1, tiempoInvocacion);
     }
 
     void InctanciarPatos()
@@ -22,7 +22,7 @@ public class GeneradorDePatos : MonoBehaviour
 
     Vector3 VectorRandon()
     {
-        Vector3 posicionPato = new Vector3(transform.position.x , Random.Range(-2, 3), 0);
+        Vector3 posicionPato = new Vector3(transform.position.x , transform.position.y);
         return posicionPato;
     }
 }

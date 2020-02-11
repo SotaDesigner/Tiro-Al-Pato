@@ -16,9 +16,15 @@ public class ControlDisparo : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            GastarBala();
             Temblar();
             AgujeroDeBala();
         }
+    }
+
+    void GastarBala()
+    {
+        GameControl.municion--;
     }
     /// <summary>
     /// Temblar nos selecionará de manera randon una de las 3 animaciones que tenemos para la cámara 
@@ -27,8 +33,7 @@ public class ControlDisparo : MonoBehaviour
     {
         //Nos da el nombre aleatorio
         string nombreTrigger = "Shot" + Random.Range(1, 4);
-        Debug.Log("le diste güey");
-        Debug.Log(nombreTrigger);
+
         //Ejecuta la animación qe anteriormente nos ha dado el string
         anim.SetTrigger(nombreTrigger);
     }
@@ -51,22 +56,39 @@ public class ControlDisparo : MonoBehaviour
             //Debug.Log(_impacto.collider.transform.name);
             if(_impacto.collider.transform.tag == ("ParedAzul"))
             {
+                agujeroDeBalaAzul.GetComponent<SpriteRenderer>().sortingLayerName = _impacto.collider.gameObject.GetComponent<SpriteRenderer>().sortingLayerName;
+                agujeroDeBalaAzul.GetComponent<SpriteRenderer>().sortingOrder = _impacto.collider.gameObject.GetComponent<SpriteRenderer>().sortingOrder;
+
                 Instantiate(agujeroDeBalaAzul, agujeroPos, Quaternion.identity, _impacto.collider.transform);
+                
             }
             else if (_impacto.collider.transform.tag == ("Suelo"))
             {
+                agujeroDeBalaSuelo.GetComponent<SpriteRenderer>().sortingLayerName = _impacto.collider.gameObject.GetComponent<SpriteRenderer>().sortingLayerName;
+                agujeroDeBalaSuelo.GetComponent<SpriteRenderer>().sortingOrder = _impacto.collider.gameObject.GetComponent<SpriteRenderer>().sortingOrder;
+
                 Instantiate(agujeroDeBalaSuelo, agujeroPos, Quaternion.identity, _impacto.collider.transform);
+                
             }
             else if(_impacto.collider.transform.CompareTag("Diana"))
             {
-                Debug.Log("Diana");
+                agujeroDeBalaDianaPato.GetComponent<SpriteRenderer>().sortingLayerName = _impacto.collider.gameObject.GetComponent<SpriteRenderer>().sortingLayerName;
+                agujeroDeBalaDianaPato.GetComponent<SpriteRenderer>().sortingOrder = _impacto.collider.gameObject.GetComponent<SpriteRenderer>().sortingOrder;
+
                 Instantiate(agujeroDeBalaDianaPato, agujeroPos, Quaternion.identity, _impacto.collider.transform);
+                
                 GameControl.puntuacion = GameControl.puntuacion + 2;
             }
             else           
             {
+                agujeroDeBalaDianaPato.GetComponent<SpriteRenderer>().sortingLayerName = _impacto.collider.gameObject.GetComponent<SpriteRenderer>().sortingLayerName;
+                agujeroDeBalaDianaPato.GetComponent<SpriteRenderer>().sortingOrder = _impacto.collider.gameObject.GetComponent<SpriteRenderer>().sortingOrder;
+
                 Instantiate(agujeroDeBalaDianaPato, agujeroPos, Quaternion.identity, _impacto.collider.transform);
-                GameControl.puntuacion = GameControl.puntuacion + ControlPatitos.puntuacionPorPato;
+                
+                Destroy(_impacto.collider.gameObject);
+                GameControl.puntuacion += ControlPatitos.puntuacionPorPato;
+                GameControl.velocidadPatos += 0.05f;
             }
 
 
