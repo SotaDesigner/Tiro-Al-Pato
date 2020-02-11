@@ -7,18 +7,22 @@ using UnityEngine;
 public class ControlDisparo : MonoBehaviour
 {
     
-    public Animator anim;
     public GameObject agujeroDeBalaAzul;
     public GameObject agujeroDeBalaSuelo;
     public GameObject agujeroDeBalaDianaPato;
+    public int municionNube;
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && GameControl.municion > 0 && GameControl.tiempo > 0)
         {
             GastarBala();
-            Temblar();
             AgujeroDeBala();
+        }
+        if (Input.touchCount > 0)
+        {
+            AgujeroDeBalaMovil();
+            GastarBala();
         }
     }
 
@@ -26,17 +30,7 @@ public class ControlDisparo : MonoBehaviour
     {
         GameControl.municion--;
     }
-    /// <summary>
-    /// Temblar nos selecionará de manera randon una de las 3 animaciones que tenemos para la cámara 
-    /// </summary>
-    void Temblar()
-    {
-        //Nos da el nombre aleatorio
-        string nombreTrigger = "Shot" + Random.Range(1, 4);
 
-        //Ejecuta la animación qe anteriormente nos ha dado el string
-        anim.SetTrigger(nombreTrigger);
-    }
     /// <summary>
     /// AgujeroDeBala nos dirá la posición del ratón al clickear y así crear el sprite en su localización
     /// </summary>
@@ -76,8 +70,18 @@ public class ControlDisparo : MonoBehaviour
                 agujeroDeBalaDianaPato.GetComponent<SpriteRenderer>().sortingOrder = _impacto.collider.gameObject.GetComponent<SpriteRenderer>().sortingOrder;
 
                 Instantiate(agujeroDeBalaDianaPato, agujeroPos, Quaternion.identity, _impacto.collider.transform);
-                
-                GameControl.puntuacion = GameControl.puntuacion + 2;
+
+                Destroy(_impacto.collider.gameObject);
+                GameControl.puntuacion += Diana.puntuacionPorDiana;
+                GameControl.velocidadDiana += 0.1f;
+
+            }
+            else if(_impacto.collider.transform.CompareTag("Nube"))
+            {
+                GameControl.municion += municionNube;
+                Destroy(_impacto.collider.gameObject);
+
+                GameControl.velocidadNube += 0.05f;
             }
             else           
             {
@@ -88,17 +92,75 @@ public class ControlDisparo : MonoBehaviour
                 
                 Destroy(_impacto.collider.gameObject);
                 GameControl.puntuacion += ControlPatitos.puntuacionPorPato;
-                GameControl.velocidadPatos += 0.05f;
+                GameControl.velocidadPatos += 0.02f;
+                GameControl.tiempo += 5;
             }
+        }     
+       
+    }
+    void AgujeroDeBalaMovil()
+    {
+        RaycastHit2D _impacto;
+        Touch touch = Input.GetTouch(0);
+        //Nos transforma el vecto3 de la pantalla ha la pantalla de nuestro juego
+        Vector3 _mousePos = Camera.main.ScreenToWorldPoint(touch.position);
+        // Lanzamos un rayo en la posicion mousePos a traves del eje Z
+        _impacto = Physics2D.Raycast(_mousePos, Vector2.zero);
+        Vector3 agujeroPos = new Vector3(_mousePos.x, _mousePos.y, 0);
+        if (_impacto)
+        {
+            //instancia el prefac del agujero, dentro del pbjeto que hemos impactado
+            //Instantiate(agujeroDeBala, agujeroPos, Quaternion.identity, _impacto.collider.transform);
+            //Debug.Log(_impacto.collider.transform.name);
+            if (_impacto.collider.transform.tag == ("ParedAzul"))
+            {
+                agujeroDeBalaAzul.GetComponent<SpriteRenderer>().sortingLayerName = _impacto.collider.gameObject.GetComponent<SpriteRenderer>().sortingLayerName;
+                agujeroDeBalaAzul.GetComponent<SpriteRenderer>().sortingOrder = _impacto.collider.gameObject.GetComponent<SpriteRenderer>().sortingOrder;
 
+                Instantiate(agujeroDeBalaAzul, agujeroPos, Quaternion.identity, _impacto.collider.transform);
 
+            }
+            else if (_impacto.collider.transform.tag == ("Suelo"))
+            {
+                agujeroDeBalaSuelo.GetComponent<SpriteRenderer>().sortingLayerName = _impacto.collider.gameObject.GetComponent<SpriteRenderer>().sortingLayerName;
+                agujeroDeBalaSuelo.GetComponent<SpriteRenderer>().sortingOrder = _impacto.collider.gameObject.GetComponent<SpriteRenderer>().sortingOrder;
+
+                Instantiate(agujeroDeBalaSuelo, agujeroPos, Quaternion.identity, _impacto.collider.transform);
+
+            }
+            else if (_impacto.collider.transform.CompareTag("Diana"))
+            {
+                agujeroDeBalaDianaPato.GetComponent<SpriteRenderer>().sortingLayerName = _impacto.collider.gameObject.GetComponent<SpriteRenderer>().sortingLayerName;
+                agujeroDeBalaDianaPato.GetComponent<SpriteRenderer>().sortingOrder = _impacto.collider.gameObject.GetComponent<SpriteRenderer>().sortingOrder;
+
+                Instantiate(agujeroDeBalaDianaPato, agujeroPos, Quaternion.identity, _impacto.collider.transform);
+
+                Destroy(_impacto.collider.gameObject);
+                GameControl.puntuacion += Diana.puntuacionPorDiana;
+                GameControl.velocidadDiana += 0.1f;
+
+            }
+            else if (_impacto.collider.transform.CompareTag("Nube"))
+            {
+                GameControl.municion += municionNube;
+                Destroy(_impacto.collider.gameObject);
+
+                GameControl.velocidadNube += 0.05f;
+            }
+            else
+            {
+                agujeroDeBalaDianaPato.GetComponent<SpriteRenderer>().sortingLayerName = _impacto.collider.gameObject.GetComponent<SpriteRenderer>().sortingLayerName;
+                agujeroDeBalaDianaPato.GetComponent<SpriteRenderer>().sortingOrder = _impacto.collider.gameObject.GetComponent<SpriteRenderer>().sortingOrder;
+
+                Instantiate(agujeroDeBalaDianaPato, agujeroPos, Quaternion.identity, _impacto.collider.transform);
+
+                Destroy(_impacto.collider.gameObject);
+                GameControl.puntuacion += ControlPatitos.puntuacionPorPato;
+                GameControl.velocidadPatos += 0.02f;
+                GameControl.tiempo += 5;
+            }
         }
-        
-        
-        //creamos una nuevo vector para que los agujeros queden a la altura del escenario, si no no se verán ya que sladrá a la altura de la camara. 
 
-       
-       
     }
 
 }

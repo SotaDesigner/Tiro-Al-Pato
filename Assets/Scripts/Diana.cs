@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ControlPatitos : MonoBehaviour
+public class Diana : MonoBehaviour
 {
     //variable tipo Animator para poder modificar la velocidad de la animación
     Animator controlador;
@@ -10,16 +10,19 @@ public class ControlPatitos : MonoBehaviour
     [SerializeField]
     //La variable velocidad cambiará la velocidad de la animacion
     public float velocidad;
-    public static int puntuacionPorPato;
+    public static int puntuacionPorDiana;
+
+    Transform generadorDePatos;
 
     void Start()
     {
+        generadorDePatos = GameObject.FindGameObjectWithTag("GeneradorPatos").GetComponent<Transform>();
         //inicialización del Animator
         controlador = GetComponent<Animator>();
-        velocidad = GameControl.velocidadPatos;
-        controlador.speed = velocidad/5;
+        velocidad = GameControl.velocidadDiana;
+        controlador.speed = velocidad;
         Mathf.Round(velocidad);
-        puntuacionPorPato = (int)velocidad * 2;
+        puntuacionPorDiana = (int)velocidad * 2;
     }
 
     /// <summary>

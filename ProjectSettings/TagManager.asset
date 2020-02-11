@@ -8,6 +8,7 @@ TagManager:
   - Suelo
   - Diana
   - GeneradorPatos
+  - Nube
   layers:
   - Default
   - TransparentFX

@@ -9,7 +9,8 @@ public class GeneradorDeNubes : MonoBehaviour
 
     void Start()
     {
-        float primeraNube = Random.Range(20, 35);
+        float primeraNube = Random.Range(10, 15);
+        siguienteInvocacion = Random.Range(20, 30);
         InvokeRepeating("InctanciarPatos", primeraNube, siguienteInvocacion);
     }
 
@@ -17,10 +18,8 @@ public class GeneradorDeNubes : MonoBehaviour
     {
         int nNubes;
         nNubes = Random.Range(0, nubes.Length);
-        siguienteInvocacion = Random.Range(20, 50);
         Instantiate(nubes[nNubes], Vector(), Quaternion.identity);
     }
-
     Vector3 Vector()
     {
         Vector3 posicionNube = new Vector3(transform.position.x, transform.position.y);
