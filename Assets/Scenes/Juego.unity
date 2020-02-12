@@ -833,7 +833,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -233, y: 96}
+  m_AnchoredPosition: {x: -233, y: 100}
   m_SizeDelta: {x: 216.70001, y: 78.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &310661096
@@ -1004,7 +1004,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 233, y: 96}
+  m_AnchoredPosition: {x: 233, y: 100}
   m_SizeDelta: {x: 216.70001, y: 78.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &536737043
@@ -1514,7 +1514,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 838290207}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4, z: 0}
+  m_LocalPosition: {x: 0, y: -3.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1891,7 +1891,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 3, y: 96}
+  m_AnchoredPosition: {x: 3, y: 100}
   m_SizeDelta: {x: 329.5, y: 123.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1261497467
@@ -2980,6 +2980,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameControl
       objectReference: {fileID: 0}
+    - target: {fileID: 192897634433741485, guid: 5d0563963d6747c44b6f2689d688ebd2,
+        type: 3}
+      propertyPath: textPuntuacion
+      value: 
+      objectReference: {fileID: 1261497467}
+    - target: {fileID: 192897634433741485, guid: 5d0563963d6747c44b6f2689d688ebd2,
+        type: 3}
+      propertyPath: textMunicion
+      value: 
+      objectReference: {fileID: 915868870}
+    - target: {fileID: 192897634433741485, guid: 5d0563963d6747c44b6f2689d688ebd2,
+        type: 3}
+      propertyPath: textTiempo
+      value: 
+      objectReference: {fileID: 606563873}
+    - target: {fileID: 192897634433741485, guid: 5d0563963d6747c44b6f2689d688ebd2,
+        type: 3}
+      propertyPath: panelGameOver
+      value: 
+      objectReference: {fileID: 31601169}
+    - target: {fileID: 192897634433741485, guid: 5d0563963d6747c44b6f2689d688ebd2,
+        type: 3}
+      propertyPath: textPutuacionFinal
+      value: 
+      objectReference: {fileID: 1332983461}
+    - target: {fileID: 192897634433741485, guid: 5d0563963d6747c44b6f2689d688ebd2,
+        type: 3}
+      propertyPath: textoPuntuacionMaxima
+      value: 
+      objectReference: {fileID: 277546686}
     - target: {fileID: 192897634433741482, guid: 5d0563963d6747c44b6f2689d688ebd2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3035,36 +3065,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 192897634433741485, guid: 5d0563963d6747c44b6f2689d688ebd2,
-        type: 3}
-      propertyPath: textPuntuacion
-      value: 
-      objectReference: {fileID: 1261497467}
-    - target: {fileID: 192897634433741485, guid: 5d0563963d6747c44b6f2689d688ebd2,
-        type: 3}
-      propertyPath: textMunicion
-      value: 
-      objectReference: {fileID: 915868870}
-    - target: {fileID: 192897634433741485, guid: 5d0563963d6747c44b6f2689d688ebd2,
-        type: 3}
-      propertyPath: textTiempo
-      value: 
-      objectReference: {fileID: 606563873}
-    - target: {fileID: 192897634433741485, guid: 5d0563963d6747c44b6f2689d688ebd2,
-        type: 3}
-      propertyPath: panelGameOver
-      value: 
-      objectReference: {fileID: 31601169}
-    - target: {fileID: 192897634433741485, guid: 5d0563963d6747c44b6f2689d688ebd2,
-        type: 3}
-      propertyPath: textPutuacionFinal
-      value: 
-      objectReference: {fileID: 1332983461}
-    - target: {fileID: 192897634433741485, guid: 5d0563963d6747c44b6f2689d688ebd2,
-        type: 3}
-      propertyPath: textoPuntuacionMaxima
-      value: 
-      objectReference: {fileID: 277546686}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d0563963d6747c44b6f2689d688ebd2, type: 3}
 --- !u!1001 &3765711571967198454
