@@ -22,7 +22,7 @@ public class Diana : MonoBehaviour
         velocidad = GameControl.velocidadDiana;
         controlador.speed = velocidad;
         Mathf.Round(velocidad);
-        puntuacionPorDiana = (int)velocidad * 2;
+        puntuacionPorDiana = (int)velocidad * 10;
     }
 
     /// <summary>
