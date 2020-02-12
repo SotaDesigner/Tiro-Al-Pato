@@ -19,7 +19,7 @@ public class ControlDisparo : MonoBehaviour
             GastarBala();
             AgujeroDeBala();
         }
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        if (Input.touchCount == 1 && Input.touches[0].phase == TouchPhase.Began)
         {
             AgujeroDeBalaMovil();
             GastarBala();
